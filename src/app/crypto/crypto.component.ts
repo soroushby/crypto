@@ -11,5 +11,5 @@ export class CryptoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getAllCryptos(url: any) {}
+  getAllCryptos() {}
 }
