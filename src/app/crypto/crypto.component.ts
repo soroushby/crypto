@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AllCryptos } from './interfaces/all-cryptos';
+import { CryptoDataService } from './services/crypto-data.service';
 
 @Component({
   selector: 'app-crypto',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./crypto.component.scss'],
 })
 export class CryptoComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  url = 'https://api.coincap.io/v2/assets';
+  allCryptos$: Observable<AllCryptos[]> | undefined;
+  constructor(
+    private http: HttpClient,
+    private cryptoDataService: CryptoDataService
+  ) {}
 
-  ngOnInit(): void {}
-
-  getAllCryptos() {}
+  ngOnInit(): void {
+    this.allCryptos$ = this.cryptoDataService.getAllCryptos(this.url);
+  }
 }
