@@ -10,7 +10,15 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <mat-nav-list>
+      <mat-nav-list class="navigation">
+        <a
+          mat-list-item
+          [routerLink]="['/home']"
+          routerLinkActive="router-link-active"
+        >
+          Home
+        </a>
+
         <a
           mat-list-item
           [routerLink]="['/crypto']"

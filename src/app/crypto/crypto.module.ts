@@ -10,8 +10,10 @@ import { CryptoGridComponent } from './cryptoGrid/crypto-grid/crypto-grid.compon
 import { MaterialModule } from '../shared/material/material.module';
 import { AgGridModule } from 'ag-grid-angular';
 
+import { CryptoDetailComponent } from './crypto-detail/crypto-detail.component';
+
 @NgModule({
-  declarations: [CryptoComponent, CryptoGridComponent],
+  declarations: [CryptoComponent, CryptoGridComponent, CryptoDetailComponent],
   imports: [
     CommonModule,
     CryptoRoutingModule,

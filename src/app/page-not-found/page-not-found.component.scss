@@ -1,0 +1,23 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3rem;
+  align-items: center;
+}
+
+.img {
+  height: 40rem;
+  width: 80rem;
+  border-radius: 4px;
+}
+
+.about button {
+  max-width: 100px;
+  margin-top: 30px;
+}
+
+.margin-top {
+  margin-top: 3rem;
+}

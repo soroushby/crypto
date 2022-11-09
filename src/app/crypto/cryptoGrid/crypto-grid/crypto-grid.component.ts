@@ -3,6 +3,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
 import { Observable } from 'rxjs';
+import { CryptoDataService } from '../../services/crypto-data.service';
 
 @Component({
   selector: 'app-crypto-grid',
@@ -13,16 +14,22 @@ export class CryptoGridComponent {
   @Input() cryptos!: any;
 
   public columnDefs: ColDef[] = [
-    { field: 'id' },
     { field: 'rank' },
     { field: 'name' },
-    { field: 'supply' },
-    { field: 'maxSupply' },
-    { field: 'marketCapUsd' },
-    { field: 'volumeUsd24Hr' },
-    { field: 'priceUsd' },
-    { field: 'changePercent24Hr' },
-    { field: 'vwap24Hr' },
+    {
+      field: 'supply',
+      cellRenderer: (params: any) => {
+        let value = Number(params.value);
+        return `${value.toFixed(4)}`;
+      },
+    },
+    {
+      field: 'priceUsd',
+      cellRenderer: (params: any) => {
+        let value = Number(params.value);
+        return `${value.toFixed(4)}`;
+      },
+    },
   ];
 
   public defaultColDef: ColDef = {
@@ -31,23 +38,22 @@ export class CryptoGridComponent {
   };
 
   // Data that gets displayed in the grid
-  public rowData$!: Observable<any[]>;
 
   // For accessing the Grid's API
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private cryptoDataService: CryptoDataService
+  ) {}
 
   // Example load data from sever
-  onGridReady(params: GridReadyEvent) {
-    this.rowData$ = this.http.get<any[]>(
-      'https://www.ag-grid.com/example-assets/row-data.json'
-    );
-  }
 
   // Example of consuming Grid Event
-  onCellClicked(e: CellClickedEvent): void {
-    console.log('cellClicked', e);
+  onCellClicked(e: CellClickedEvent): any {
+    let param = e['data'];
+    console.log('cellClicked', e['data']);
+    return this.cryptoDataService.getSingleCrypto(param.id);
   }
 
   // Example using Grid's API

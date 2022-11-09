@@ -1,1 +1,6 @@
-<app-crypto-grid [cryptos]="allCryptos$ | async"></app-crypto-grid>
+<div class="container">
+  <app-crypto-grid
+    class="grid"
+    [cryptos]="allCryptos$ | async"
+  ></app-crypto-grid>
+</div>
