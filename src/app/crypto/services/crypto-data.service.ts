@@ -19,7 +19,7 @@ export class CryptoDataService {
 
   getSingleCrypto(id: any) {
     return this.http
-      .get<SingleCrypto>(`api.coincap.io/v2/assets/${id}`)
+      .get<SingleCrypto>(`https://api.coincap.io/v2/assets/${id}`)
       .pipe(map((singleCrypto: any) => singleCrypto['data']));
   }
 }

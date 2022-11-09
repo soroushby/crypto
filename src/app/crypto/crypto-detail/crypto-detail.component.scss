@@ -1,0 +1,17 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+}
+
+.card {
+  width: 45rem;
+  background-image: radial-gradient(circle farthest-side, #fceabb, #f8b500);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

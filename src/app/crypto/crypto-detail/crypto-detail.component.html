@@ -1,1 +1,32 @@
-<p>crypto-detail works!</p>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>{{ singleCrypto?.name }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <h3>Name : {{ singleCrypto?.name }}</h3>
+      <hr />
+      <h3>Supply : {{ singleCrypto?.supply }}</h3>
+      <hr />
+      <h3>Max supply : {{ singleCrypto?.maxSupply }}</h3>
+      <hr />
+      <h3>Change percent in 24 hours: {{ singleCrypto?.changePercent24Hr }}</h3>
+      <hr />
+      <h3>Price in USD : {{ singleCrypto?.priceUsd }}</h3>
+      <hr />
+      <h3>Volume in last 24 hours : {{ singleCrypto?.volumeUsd24Hr }}</h3>
+      <hr />
+      <h3>Market cap in USD : {{ singleCrypto?.marketCapUsd }}</h3>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        [routerLink]="['/crypto']"
+        routerLinkActive="router-link-active"
+      >
+        Back to all Cryptos
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

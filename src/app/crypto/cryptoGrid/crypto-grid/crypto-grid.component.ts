@@ -55,7 +55,7 @@ export class CryptoGridComponent {
   onCellClicked(e: CellClickedEvent): any {
     let param = e['data'];
     console.log('cellClicked', e['data']);
-    this.router.navigate(['/crypto', param.id]);
+    this.router.navigate(['/crypto/' + param.id]);
   }
 
   // Example using Grid's API
