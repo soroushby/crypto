@@ -1,5 +1,26 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side">Sidenav content</mat-sidenav>
+  <mat-sidenav #sidenav mode="side">
+    <mat-nav-list>
+      <mat-list-item class="sidenav-item">
+        <a
+          (click)="sidenav.close()"
+          matLine
+          [routerLink]="['/home']"
+          routerLinkActive="router-link-active"
+          >Home</a
+        >
+      </mat-list-item>
+      <mat-list-item class="sidenav-item">
+        <a
+          (click)="sidenav.close()"
+          matLine
+          [routerLink]="['/crypto']"
+          routerLinkActive="router-link-active"
+          >Cryptos</a
+        >
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="toolbar">
       <button
@@ -11,21 +32,22 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-nav-list class="navigation">
-        <a
-          mat-list-item
-          [routerLink]="['/home']"
-          routerLinkActive="router-link-active"
-        >
-          Home
-        </a>
-
-        <a
-          mat-list-item
-          [routerLink]="['/crypto']"
-          routerLinkActive="router-link-active"
-        >
-          Cryptos
-        </a>
+        <mat-list-item class="navigation-item">
+          <a
+            matLine
+            [routerLink]="['/home']"
+            routerLinkActive="router-link-active"
+            >Home</a
+          >
+        </mat-list-item>
+        <mat-list-item class="navigation-item">
+          <a
+            matLine
+            [routerLink]="['/crypto']"
+            routerLinkActive="router-link-active"
+            >Cryptos</a
+          >
+        </mat-list-item>
       </mat-nav-list>
     </mat-toolbar>
     <router-outlet></router-outlet>
