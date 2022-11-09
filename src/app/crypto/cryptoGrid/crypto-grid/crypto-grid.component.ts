@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
 import { Observable } from 'rxjs';
@@ -11,6 +12,12 @@ import { CryptoDataService } from '../../services/crypto-data.service';
   styleUrls: ['./crypto-grid.component.scss'],
 })
 export class CryptoGridComponent {
+  constructor(
+    private http: HttpClient,
+    private cryptoDataService: CryptoDataService,
+    private router: Router
+  ) {}
+
   @Input() cryptos!: any;
 
   public columnDefs: ColDef[] = [
@@ -42,18 +49,13 @@ export class CryptoGridComponent {
   // For accessing the Grid's API
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
-  constructor(
-    private http: HttpClient,
-    private cryptoDataService: CryptoDataService
-  ) {}
-
   // Example load data from sever
 
   // Example of consuming Grid Event
   onCellClicked(e: CellClickedEvent): any {
     let param = e['data'];
     console.log('cellClicked', e['data']);
-    return this.cryptoDataService.getSingleCrypto(param.id);
+    this.router.navigate(['/crypto', param.id]);
   }
 
   // Example using Grid's API
